@@ -1,6 +1,7 @@
 var Discord = require('discord.js');
 var client = new Discord.Client();
 
+console.log(process.env);
 client.login(process.env.DISCORD_KEY);
 
 client.on('ready', function() {
