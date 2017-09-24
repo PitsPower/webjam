@@ -11,6 +11,6 @@ deploy:
     secure: FKsmfy6mNzVBNA/CvrgMPQZNGx6xKkIkltZZGjstynf6YCZ6fXvdV+AQrAhK+DvrxLNENDuSdg0A30pfCiDFDe14XacQP60nKjNRJHE+VQv7rqA/K0JmqArMcHwu6z1woXpuugnnbIvdU+xh5xdYAtUzILwzKZrV5c5+A/tsqePg0GAiNpeAbZcyclkvBnSMGAKorRNlQnLXo8EoKEaAZoHG57KEt1Jldd2VHkZvMJCMnt8L5DSr/Lm3gyVZjqG85QE0VjPLcTPKp1Sex3pycoEe0hEwf4MDRSlYihaXaB0mDyvO84Y02J7Dsp29ufxk8G2I+6HyNUEw4N38DU0xo+IlZt0vaPWqs4m89vEmWSwiPdpg+i1XJMh5fbLY2f3itL8eQ/FaAiz/YYANXwOGsbpn36RyP6lT+drIS1mRFqLlU+I4RNDeIsEGZi1w8GZEriWqaA4VJj7a4++GPxHFJeU+PVJv+yAlq0xGPrmEyoJdcs3eXbAtHcQ2VVTQirzgAg9lENWv7ldc5kkrqXJLxHfKNnuTCx6CMo1gRJYm41/3Gfe6lk/5fjyFgvF794fANvZJoOTTJ5MmSwY0LXwcA4NFnycvqK/x5NEUkeQi1MSOPQz5ADcJjqDULo0vvmJ1AO/5w9m8tdCpuGXivErXtmkQl8X4QEnHpBfM4bZ5+Hk=
   app: webjam
   domain: palutena
+  deployment_branch: master
   on:
     repo: WheatleyTheCoder/webjam
-    branch: master
