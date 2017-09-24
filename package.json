@@ -1,0 +1,19 @@
+{
+  "name": "webjam",
+  "version": "1.0.0",
+  "description": "A weekly competition to make the best site in 48 hours!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WheatleyTheCoder/webjam.git"
+  },
+  "author": "WheatleyTheCoder <slendermanwithaface@gmail.com> (http://project2.neocities.org/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WheatleyTheCoder/webjam/issues"
+  },
+  "homepage": "https://github.com/WheatleyTheCoder/webjam#readme"
+}
