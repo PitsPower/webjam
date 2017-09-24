@@ -4,7 +4,7 @@
   "description": "A weekly competition to make the best site in 48 hours!",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
     "test": "echo \"No tests yet!\" && exit 0"
   },
   "repository": {
