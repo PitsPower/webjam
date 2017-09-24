@@ -12,5 +12,6 @@ deploy:
   app: webjam
   domain: palutena
   deployment_branch: master
+  skip_cleanup: true
   on:
     repo: WheatleyTheCoder/webjam
