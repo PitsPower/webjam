@@ -13,4 +13,4 @@ deploy:
   domain: palutena
   on:
     repo: WheatleyTheCoder/webjam
-	branch: master
+    branch: master
