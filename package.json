@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/WheatleyTheCoder/webjam#readme",
   "dependencies": {
-    "discord.js": "11.2.1"
+    "discord.js": "11.2.1",
+    "favicon": "0.0.2",
+    "request": "^2.82.0"
   }
 }
