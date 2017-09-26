@@ -21,7 +21,7 @@ var commands = [
         	    color: embedColor,
         	    fields: getHelp(false)
         	}});
-        	end();
+            end();
         }
     },
     {
@@ -34,7 +34,7 @@ var commands = [
         	    color: embedColor,
         	    fields: getHelp(true)
         	}});
-        	end();
+            end();
         }
     },
     {
