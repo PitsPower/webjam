@@ -26,7 +26,7 @@ var commands = [
     },
     {
         name: 'help',
-        desc: 'Displays all admin commands',
+        desc: 'Displays all judge commands',
         usage: 'help',
         admin: true,
         action: function(msg, args, end) {
@@ -47,6 +47,15 @@ var commands = [
                 msg.channel.send(emoji.text+'  '+args[0]).then(emoji.delete);
                 end();
             });
+        }
+    },
+    {
+        name: 'test',
+        desc: 'Testing judge only commands',
+        usage: 'test',
+        admin: true,
+        action: function(msg, args, end) {
+            end();
         }
     }
 ];
@@ -92,7 +101,7 @@ function faviconEmoji(siteName, cb) {
 }
 
 client.on('message', function(msg) {
-    if (msg.content.indexOf(prefix)==0) {
+    if (msg.content.indexOf(prefix)==0 || msg.content.indexOf(adminPrefix)==0) {
         msg.channel.startTyping();
         
         var admin = msg.content.indexOf(adminPrefix)==0;
