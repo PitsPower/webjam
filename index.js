@@ -110,9 +110,13 @@ client.on('message', function(msg) {
         
         for (var i=0;i<commands.length;i++) {
             if (commands[i].name==commandName && commands[i].admin==admin) {
-                commands[i].action(msg, commandArguments, function() {
-                    msg.channel.stopTyping(true);
-                });
+                if (!commands[i].admin || msg.member.roles.find('id', '362339662527987713')) {
+                    commands[i].action(msg, commandArguments, function() {
+                        msg.channel.stopTyping(true);
+                    });
+                } else {
+                    msg.channel.send('You are not a judge! Get outta here!');
+                }
             }
         }
     }
