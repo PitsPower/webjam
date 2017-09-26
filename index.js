@@ -7,15 +7,60 @@ var favicon = require('favicon');
 client.login(process.env.DISCORD_KEY);
 
 var prefix = 'j!';
-client.on('message', function(msg) {
-    if (msg.content.indexOf(prefix)==0) {
-        var commandArguments = msg.content.replace(prefix, '').split(' ');
-        var commandName = commandArguments.shift();
+var adminPrefix = 'j@';
+var embedColor = 6156158;
+
+var commands = [
+    {
+        name: 'help',
+        desc: 'Displays all commands',
+        usage: 'help',
+        admin: false,
+        action: function(msg, args, end) {
+            msg.channel.send({embed: {
+        	    color: embedColor,
+        	    fields: getHelp(false)
+        	}});
+        	end();
+        }
+    },
+    {
+        name: 'help',
+        desc: 'Displays all admin commands',
+        usage: 'help',
+        admin: true,
+        action: function(msg, args, end) {
+            msg.channel.send({embed: {
+        	    color: embedColor,
+        	    fields: getHelp(true)
+        	}});
+        	end();
+        }
+    },
+    {
+        name: 'favicon',
+        desc: 'Converts a favicon into an emoji',
+        usage: 'favicon [site]',
+        admin: false,
+        action: function(msg, args, end) {
+            faviconEmoji(args[0], function(emoji) {
+                msg.channel.send(emoji.text+'  '+args[0]).then(emoji.delete);
+                end();
+            });
+        }
     }
-});
-client.on('ready', function() {
-    console.log('Ready and waiting, captain!');
-});
+];
+
+function getHelp(admin) {
+    var helpArray = [];
+    for (var i=0;i<commands.length;i++) {
+        if (commands[i].admin==admin) helpArray.push({
+            name: (admin?adminPrefix:prefix)+commands[i].name,
+            value: commands[i].desc+'\n`'+(admin?adminPrefix:prefix)+commands[i].usage+'`'
+        });
+    }
+    return helpArray;
+}
 
 function faviconEmoji(siteName, cb) {
     var siteUrl = 'https://'+siteName+'.neocities.org/';
@@ -45,3 +90,24 @@ function faviconEmoji(siteName, cb) {
         }
     });
 }
+
+client.on('message', function(msg) {
+    if (msg.content.indexOf(prefix)==0) {
+        msg.channel.startTyping();
+        
+        var admin = msg.content.indexOf(adminPrefix)==0;
+        var commandArguments = msg.content.replace(prefix, '').replace(adminPrefix, '').split(' ');
+        var commandName = commandArguments.shift();
+        
+        for (var i=0;i<commands.length;i++) {
+            if (commands[i].name==commandName && commands[i].admin==admin) {
+                commands[i].action(msg, commandArguments, function() {
+                    msg.channel.stopTyping(true);
+                });
+            }
+        }
+    }
+});
+client.on('ready', function() {
+    console.log('Ready and waiting, captain!');
+});
