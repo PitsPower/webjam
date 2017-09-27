@@ -38,18 +38,6 @@ var commands = [
         }
     },
     {
-        name: 'favicon',
-        desc: 'Converts a favicon into an emoji',
-        usage: 'favicon [site]',
-        admin: false,
-        action: function(msg, args, end) {
-            faviconEmoji(args[0], function(emoji) {
-                msg.channel.send(emoji.text+'  '+args[0]).then(emoji.delete);
-                end();
-            });
-        }
-    },
-    {
         name: 'test',
         desc: 'Testing judge only commands',
         usage: 'test',
