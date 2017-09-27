@@ -37,13 +37,38 @@ var commands = [
             end();
         }
     },
+    
     {
-        name: 'test',
-        desc: 'Testing judge only commands',
-        usage: 'test',
+        name: 'list',
+        desc: 'Lists all competitors',
+        usage: 'list',
         admin: true,
         action: function(msg, args, end) {
-            end();
+            var competitors = ['project2', 'palutena', 'rocketmix'];
+            var embedArray = [];
+            
+            var emojis = [];
+            for (var i=0;i<competitors.length;i++) {
+                faviconEmoji(competitors[i], function(emoji, i) {
+                    embedArray.push({
+                        name: (emoji?emoji.text+'\t':'')+competitors[i],
+                        value: '[Site](https://'+competitors[i]+'.neocities.org)'
+                    });
+                    emojis.push(emoji);
+                    
+                    if (emojis.length==competitors.length) {
+                        msg.channel.send({embed: {
+                            color: embedColor,
+                            fields: embedArray
+                        }}).then(function() {
+                            for (var j=0;j<emojis.length;j++) {
+                                if (emojis[j]) emojis[j].delete();
+                            }
+                        });
+                        end();
+                    }
+                }, i);
+            }
         }
     }
 ];
@@ -59,7 +84,7 @@ function getHelp(admin) {
     return helpArray;
 }
 
-function faviconEmoji(siteName, cb) {
+function faviconEmoji(siteName, cb, i) {
     var siteUrl = 'https://'+siteName+'.neocities.org/';
     favicon(siteUrl, function(err, data) {
         if (err) return console.log(err);
@@ -80,10 +105,10 @@ function faviconEmoji(siteName, cb) {
                     delete: function() {
                         emojiGuild.deleteEmoji(emoji)
                     }
-                });
+                }, i);
             });
         } else {
-            cb(null);
+            cb(null, i);
         }
     });
 }
